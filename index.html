@@ -286,6 +286,7 @@ footer{border-top:var(--bw) solid var(--paper);background:var(--bg);padding-bloc
 </style>
 </head>
 <body>
+<div class="gl-amb" aria-hidden="true"></div>
 <a class="skip" href="#main">Vai al contenuto</a>
 
 <div class="mq mq-top" aria-hidden="true">
@@ -683,5 +684,27 @@ document.documentElement.className += " js";
 @media(max-width:480px){#wa-float span{display:none}#wa-float{padding:15px;border-radius:50%}}
 
 </style>
+<!-- GLASS LAYER v1 -->
+<style>
+:root{--gl-a:255,46,136;--gl-a2:255,46,136;--gl-surf:rgba(255,255,255,.045);--gl-surf-2:rgba(255,255,255,.075);--gl-bd:rgba(255,255,255,.1);--gl-bd-hi:rgba(255,46,136,.45);--gl-hl:rgba(255,255,255,.07);--gl-nav:rgba(10,10,10,.55);--gl-sh:rgba(0,0,0,.55);--gl-r:0px;--gl-ease:cubic-bezier(.34,1.56,.64,1);--gl-out:cubic-bezier(.22,1,.36,1);color-scheme:dark}
+@supports(transition-timing-function:linear(0,1)){:root{--gl-ease:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1)}}
+::selection{background:rgba(255,46,136,.28)}
+.gl-amb{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(42vmax 42vmax at 10% 6%,rgba(255,46,136,0.2),transparent 62%),radial-gradient(38vmax 38vmax at 92% 38%,rgba(255,46,136,0.15),transparent 60%),radial-gradient(36vmax 36vmax at 24% 96%,rgba(255,46,136,0.1),transparent 60%)}
+.stats{background-color:var(--gl-surf);background-image:radial-gradient(380px circle at var(--mx,50%) var(--my,-40%),rgba(255,46,136,.13),transparent 65%);border:1px solid var(--gl-bd);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);box-shadow:inset 0 1px 0 var(--gl-hl),0 18px 40px -28px var(--gl-sh);transition:opacity .7s ease,transform .6s var(--gl-ease),border-color .3s var(--gl-out),background-color .3s var(--gl-out),box-shadow .45s var(--gl-out)}
+.stats:hover{background-color:var(--gl-surf-2);border-color:var(--gl-bd-hi);box-shadow:inset 0 1px 0 var(--gl-hl),0 0 0 1px rgba(255,46,136,.12),0 26px 60px -26px rgba(255,46,136,.5)}
+.btn{transition:transform .55s var(--gl-ease),box-shadow .35s var(--gl-out),background-color .3s var(--gl-out),border-color .3s var(--gl-out),color .2s,filter .3s}
+.btn:active{transition-duration:.12s}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid rgb(255,46,136);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.stats,.btn{transition-duration:.01ms}}
+:root{--gl-bd:#ffffff}
+.gl-amb{opacity:.7}
+.navbar{background:rgba(10,10,10,.6);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+.stats{border:var(--bw) solid var(--paper);box-shadow:none}
+.stats:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 24px 60px -30px rgba(255,46,136,.6)}
+.btn:not(.btn-accent):not(.btn-dark):not(.btn-white):not(.btn-ghost-dark):not(.btn-ghost-b){background-color:rgba(255,255,255,.05);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btn:hover{box-shadow:0 0 0 1px var(--accent),0 14px 34px -14px rgba(255,46,136,.7)}
+</style>
+<script>(function(){if(!matchMedia('(pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var S=".stats",q=0,ev;document.addEventListener('pointermove',function(e){ev=e;if(q)return;q=requestAnimationFrame(function(){q=0;var t=ev.target,el=t&&t.closest?t.closest(S):null;if(!el)return;var r=el.getBoundingClientRect();el.style.setProperty('--mx',(ev.clientX-r.left)+'px');el.style.setProperty('--my',(ev.clientY-r.top)+'px')})},{passive:true})})();</script>
+<!-- /GLASS LAYER v1 -->
 </body>
 </html>
